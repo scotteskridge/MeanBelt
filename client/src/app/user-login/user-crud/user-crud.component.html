@@ -1,0 +1,60 @@
+<p>
+    user-crud works!
+</p>
+
+
+<table>
+    <tr>
+        <th>User name</th>
+        <th>Phone</th>
+        <th>Address </th>
+        <th>email</th>
+        <th>inspect</th>
+        <th>update</th>
+        <th>delete</th>
+
+    </tr>
+
+    <tr *ngFor="let user of allUsers">
+        <td>{{user.name.first}} {{user.name.last}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.address}} </td>
+        <td>{{user.email}}</td>
+        <td><button (click)="inspect(user._id)">Inspect</button></td>
+        <td><button (click)="inspect(user._id)">Update</button></td>
+        <td><button (click)="inspect(user._id)">Delete</button></td>
+
+    </tr>
+
+</table>
+
+{{selectedUser | json}}
+
+<form *ngIf="selectedUser.name">
+    <p>First Name: <input [(ngModel)]="selectedUser.name.first" type="text" name="nameFirst" value="selectedUser.name.first"></p>
+    <p>Last name: <input [(ngModel)]="selectedUser.name.last" type="text" name="nameLast" value="selectedUser.name.last"></p>
+    <p>Email: <input [(ngModel)]="selectedUser.email" type="email" name="email" value="selectedUser.email"></p>
+    <p>Phone number: <input [(ngModel)]="selectedUser.phone" type="tel" name="phone" value="selectedUser.phone"></p>
+    <p>Address <input [(ngModel)]="selectedUser.address" type="text" name="address" value="selectedUser.address"></p>
+    <p>Gender <input [(ngModel)]="selectedUser.gender" type="text" name="gender" value="selectedUser.gender"></p>
+    <p>Birthdate<input [(ngModel)]="selectedUser.birthdate" type="date" name="birthdate" value="selectedUser.birthdate | date:' y-MM-dd'"></p>
+    <p>Password<input [(ngModel)]="selectedUser.password" type="password" name="password" value="selectedUser.password"></p>
+    <p>Confirm Password<input [(ngModel)]="selectedUser.passwordConfirm" type="password" name="confirmpassword" value="selectedUser.passwordConfirm"></p>
+    <button (click)="registerUser()">Register</button>
+</form>
+
+
+
+<h3>Selected Friend</h3>
+
+<p>First Name: {{selectedUser.name.first}}</p>
+<p>Last Name: {{selectedUser.name.last}}</p>
+<p>phone: {{selectedUser.phone}}</p>
+<p>address: {{selectedUser.address}}</p>
+<p>email: {{selectedUser.email}}</p>
+<p>gender: {{selectedUser.gender}}</p>
+<p>birthdate: {{selectedUser.birthdate | date: "y-MM-dd"}}</p>
+<p>password: {{selectedUser.password}}</p>
+<p>Registered on: {{selectedUser.createdAt}}</p>
+<p>Last Edited on: {{selectedUser.updatedAt}}</p>
+<p>User ID: {{selectedUser._id}}</p>

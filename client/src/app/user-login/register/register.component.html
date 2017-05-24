@@ -1,0 +1,17 @@
+<p>
+    Register new user
+</p>
+
+<form>
+    <p>First Name: <input [(ngModel)]="new_user.name.first" type="text" name="nameFirst" value=""></p>
+    <p>Last name: <input [(ngModel)]="new_user.name.last" type="text" name="nameLast" value=""></p>
+    <p>Email: <input [(ngModel)]="new_user.email" type="email" name="email" value="email"></p>
+    <p>Phone number: <input [(ngModel)]="new_user.phone" type="tel" name="phone" value=""></p>
+    <p>Address <input [(ngModel)]="new_user.address" type="text" name="address" value=""></p>
+    <p>Gender <input [(ngModel)]="new_user.gender" type="text" name="gender" value=""></p>
+    <p>Birthdate<input [(ngModel)]="new_user.birthdate" type="date" name="birthdate" value=""></p>
+    <p>Password<input [(ngModel)]="new_user.password" type="password" name="password" value="password"></p>
+    <p>Confirm Password<input [(ngModel)]="new_user.passwordConfirm" type="password" name="confirmpassword" value="password"></p>
+    <button (click)="registerUser()">Register</button>
+
+</form>

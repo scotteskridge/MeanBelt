@@ -1,0 +1,25 @@
+{
+    "name": "MEANFriends",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "Scott Eskridge",
+    "license": "ISC",
+    "dependencies": {
+        "angular": "^1.6.4",
+        "bcrypt": "^1.0.2",
+        "body-parser": "^1.17.2",
+        "express": "^4.15.3",
+        "mongoose": "^4.10.0",
+        "socket.io": "^2.0.1",
+        "validator": "^7.0.0"
+    },
+    "devDependencies": {
+        "@angular/cli": "^1.0.4"
+    }
+}

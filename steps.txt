@@ -1,0 +1,39 @@
+1) make a folder structure
+    project level
+    1a)create a server.js file
+
+      2) npm init - y // makes package.json
+
+      3) install node packages
+         npm install express body-parser mongoose socket.io --save
+      // the --save updates the package.json file  edit package.json as needed
+
+4) link to git
+    add git repository to package.json
+
+    5) ng new client //this makes the client folder
+     
+
+    6) server Folder
+        7)config
+            8) mongoose.js
+            9) routes.js
+        10) controllers
+            11) my_controller_name.js
+        11) models
+            12) my_model_name.js
+
+
+
+
+Or copy this file structure and then run
+mongod.exe
+npm install .
+npm install angular  // if needed
+npm install angualr/compiler-cli //if needed
+ng build -w
+nodemon server.js 
+
+notes // have a component per wire frame operation
+include a service for your http stuff that is going to be in all sub component
+
