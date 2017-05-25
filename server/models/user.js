@@ -62,13 +62,13 @@ let UserSchema = new mongoose.Schema({
         type: String
     },
 
-    gender: {
-        type: String,
-        enum: ['MALE', 'FEMALE'],
-        uppercase: true,
-        trim: true,
-        default: "MALE"
-    },
+    // gender: {
+    //     type: String,
+    //     enum: ['MALE', 'FEMALE'],
+    //     uppercase: true,
+    //     trim: true,
+    //     default: "MALE"
+    // },
 
     birthdate: {
         type: Date,

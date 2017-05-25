@@ -7,7 +7,7 @@ export class User {
     phone;
     address;
     email;
-    gender;
+    // gender;
     birthdate;
     password;
     passwordConfirm;

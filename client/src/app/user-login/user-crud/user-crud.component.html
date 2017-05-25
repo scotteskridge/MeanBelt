@@ -36,8 +36,7 @@
     <p>Email: <input [(ngModel)]="selectedUser.email" type="email" name="email" value="selectedUser.email"></p>
     <p>Phone number: <input [(ngModel)]="selectedUser.phone" type="tel" name="phone" value="selectedUser.phone"></p>
     <p>Address <input [(ngModel)]="selectedUser.address" type="text" name="address" value="selectedUser.address"></p>
-    <p>Gender <input [(ngModel)]="selectedUser.gender" type="text" name="gender" value="selectedUser.gender"></p>
-    <p>Birthdate<input [(ngModel)]="selectedUser.birthdate" type="date" name="birthdate" value="selectedUser.birthdate | date:' y-MM-dd'"></p>
+    <p>Birthdate<input [(ngModel)]="selectedUser.birthdate" type="date" name="birthdate" value="selectedUser.birthdate | date: 'y-MM-dd'"></p>
     <p>Password<input [(ngModel)]="selectedUser.password" type="password" name="password" value="selectedUser.password"></p>
     <p>Confirm Password<input [(ngModel)]="selectedUser.passwordConfirm" type="password" name="confirmpassword" value="selectedUser.passwordConfirm"></p>
     <button (click)="registerUser()">Register</button>
@@ -52,7 +51,6 @@
 <p>phone: {{selectedUser.phone}}</p>
 <p>address: {{selectedUser.address}}</p>
 <p>email: {{selectedUser.email}}</p>
-<p>gender: {{selectedUser.gender}}</p>
 <p>birthdate: {{selectedUser.birthdate | date: "y-MM-dd"}}</p>
 <p>password: {{selectedUser.password}}</p>
 <p>Registered on: {{selectedUser.createdAt}}</p>

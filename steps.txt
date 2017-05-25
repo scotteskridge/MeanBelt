@@ -37,3 +37,100 @@ nodemon server.js
 notes // have a component per wire frame operation
 include a service for your http stuff that is going to be in all sub component
 
+
+Deployment
+{{project_name}}
+
+Part 1: Get prepared
+Core Setup Requirements
+An AWS account 
+A GitHub or bitbucket account 
+An internet connection 
+Git should be installed locally
+Get going
+Create a local, functional project 
+Keep that version, version controlled via git - good practice anyway.
+Make a GitHub/bitbucket repository
+Push your project to that GitHub/bitbucket repository
+
+Part 2: Set up AWS
+Enter AWS, and click launch new instance.
+Select Ubuntu 16.04 LTS
+Select t2.micro
+Set security settings:
+ssh 0.0.0.0, (Anywhere or myIP)
+http 0.0.0.0 (Anywhere)
+https 0.0.0.0 (Anywhere, or don't set it)
+Download a .pem key from AWS
+Move the .pem file to an appropriate folder on your system
+
+/////////////////////////////////// bash commands start here ////////////////////////////////////
+sudo apt-get update
+sudo apt-get install -y build-essential openssl libssl-dev pkg-config
+sudo apt-get install -y nodejs nodejs-legacy
+sudo apt-get install npm
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+sudo apt-get install nginx
+sudo apt-get install git
+cd /var/www
+sudo git clone https://github.com/scotteskridge/MeanBelt.git
+
+cd /var/www/{{project_name}}
+Part 4: Set up NGINX
+cd /etc/nginx/sites-available
+sudo vim {{project_name}}
+//// "i" to insert esc to get command lines :wq to write and quit
+// paste into this file the following {{private ip}} comes from aws
+// double check the port 8000 or port 5000
+server {
+    listen 80;
+    location / {
+        proxy_pass http://{{PRIVATE-IP}}:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo rm default
+sudo ln -s /etc/nginx/sites-available/{{project_name}} /etc/nginx/sites-enabled/{{project_name}}
+// sudo ln -s /etc/nginx/sites-available/MeanBelt /etc/nginx/sites-enabled/MeanBelt
+
+cd /etc/nginx/sites-enabled/
+sudo rm default
+
+sudo npm install pm2 -g
+cd /var/www/{{project_name}}
+
+sudo npm install
+//nextstep is not on platform
+sudo npm install -g @angular/cli
+cd client
+sudo npm install // dont forget to install angulars dependacies as well
+sudo ng build //still from inside the angular client folder this will build the dist folder
+
+//time to get mongo going
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo service mongod start
+sudo mongod
+
+//after starting mongo likely have errors go to root
+cd /
+//make a folder at root/data/db 
+sudo mkdir /data
+cd data
+sudo mkdir db
+sudo mongod
+sudo pm2 start mongod
+
+
+pm2 stop 0
+pm2 restart 0
+sudo service nginx reload && sudo service nginx restart
