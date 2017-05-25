@@ -1,7 +1,7 @@
 export class Friend {
     firstName: String;
     lastName: String;
-    birthdate: Date;
+    birthdate;
     createdAt;
     updatedAt;
     _id;

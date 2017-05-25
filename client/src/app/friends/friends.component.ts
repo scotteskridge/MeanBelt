@@ -73,6 +73,8 @@ export class FriendsComponent implements OnInit {
     }
 
   updateFriend(_id){
+    //somthing about this is casueing a bug I thing that updating a friend need to go and find its own friend
+    //not sure though
     this.inspectFriend(_id)
       // .then(console.log("after you found a friend"))
   }
@@ -113,13 +115,23 @@ export class FriendsComponent implements OnInit {
   }
 
   updateFriendsList(){
+    console.log("updateing friends list")
     this.friends_service.get_all_friends()
       .then((data) => {
         // console.log(data)
-        this.all_friends = data       
+        this.all_friends = data 
+        for(let friend of this.all_friends){
+          friend.birthday = new Date(friend.birthday).toLocaleDateString();
+          }      
       })
       .catch((err) => {console.log(err)})
 
+  }
+
+  refresh(){
+    console.log("heard the refresh emit")
+    this.selectedFriend = new Friend
+    this.updateFriendsList()
   }
 
   clearUser(){

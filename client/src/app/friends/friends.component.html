@@ -28,6 +28,6 @@
 
 
 
-<app-create-friend *ngIf="components.create" (refresh)='updateFriendsList()'></app-create-friend>
-<app-edit-friend *ngIf="components.update" [selectedFriend]='selectedFriend' (refresh)='updateFriendsList()'></app-edit-friend>
+<app-create-friend *ngIf="components.create" (refresh)='refresh()'></app-create-friend>
+<app-edit-friend *ngIf="components.update" [selectedFriend]='selectedFriend' (refresh)='refresh()'></app-edit-friend>
 <app-inspect-friend *ngIf="components.show" [selectedFriend]='selectedFriend'></app-inspect-friend>
