@@ -133,4 +133,5 @@ sudo pm2 start mongod
 
 pm2 stop 0
 pm2 restart 0
+pm2 start server.js
 sudo service nginx reload && sudo service nginx restart

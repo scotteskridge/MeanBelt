@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input , OnChanges} from '@angular/core';
 import { Friend } from "./../Friend"
 import { FriendsService } from "./../friends.service" 
 
@@ -7,19 +7,29 @@ import { FriendsService } from "./../friends.service"
   templateUrl: './edit-friend.component.html',
   styleUrls: ['./edit-friend.component.css']
 })
-export class EditFriendComponent implements OnInit {
+export class EditFriendComponent implements OnInit, OnChanges {
 
   @Output() refresh = new EventEmitter
   //becuase this is an input from the parent 2 way data binding is safe to use
   @Input() selectedFriend
-  constructor(private friends_service: FriendsService) { }
+  bdate
+  constructor(private friends_service: FriendsService) {
+    
+   }
 
   ngOnInit() {
-    console.log(this.selectedFriend)
+    this.selectedFriend.birthdate = this.selectedFriend.birthdate.slice(0,10)
+  }
+
+  ngOnChanges(){
+    console.log("the selected birthdate is: ", typeof this.selectedFriend.birthdate)
+    this.selectedFriend.birthdate = this.selectedFriend.birthdate.slice(0,10)
+    // this.bdate = new Date(this.selectedFriend.birthdate).toLocaleDateString()
+
     // this.editFriend= this.selectedFriend
   }
 
-  update_friend(){
+  update_friend(){` `
 
     this.friends_service.update_friend(this.selectedFriend)
       .then((data) => {
@@ -28,5 +38,8 @@ export class EditFriendComponent implements OnInit {
     })
       .catch((err) => {console.log(err)})
   }
+
+  // friend.birthday = new Date(friend.birthday).toLocaleDateString();
+  // var d = new Date("2015-03-25");
 
 }

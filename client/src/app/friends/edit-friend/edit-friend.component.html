@@ -3,8 +3,8 @@
 <form action="">
     <p>First Name: <input type="text" [(ngModel)]="selectedFriend.firstName" name="firstName"> </p>
     <p>Last Name: <input type="text" [(ngModel)]="selectedFriend.lastName" name="lastName"> </p>
-    <p>Birthdate: <input type="date" [(ngModel)]="selectedFriend.birthdate" name="birthdate" value="selectedFriend.birthdate | date: 'y-MM-dd'"> </p>
+    <p>Birthdate: <input type="date" [(ngModel)]="selectedFriend.birthdate" name="birthdate" value="{{selectedFriend.birthdate}}"> </p>
     <button (click)="update_friend()" name="create">Update Friend</button>
 </form>
 
-{{selectedFriend.birthdate | date: 'y-MM-dd'}} {{selectedFriend.birthdate}}
+{{ bdate}} {{selectedFriend.birthdate}} {{selectedFriend.birthdate | date: 'yyyy-MM-dd'}}

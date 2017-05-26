@@ -52,7 +52,7 @@ class Users {
 
     delete(req, res) {
         // console.log("the server is trying to delete this _id", req.params.id)
-        User.remove({ _id: req.params.id })
+        User.remove({ _id: req.params._id })
             .then(() => { res.json(true) })
             .catch(err => {
                 console.log("User find error", err)
@@ -66,8 +66,30 @@ class Users {
         //and then return that one User
 
 
-        User.findOne({ _id: req.params.id })
+        User.findOne({ _id: req.params._id })
             .then(data => { res.json(data) })
+            .catch(err => {
+                console.log("User find error", err)
+                res.status(500).json(err)
+            })
+    }
+
+    login(req, res) {
+        User.findOne({ email: req.body.email })
+            .then(data => {
+                if (data.password == req.body.password) {
+                    let loggedUser = {
+                        name: data.name,
+                        _id: data._id
+                    }
+                    res.json(loggedUser)
+                    console.log("passwords match")
+                } else {
+                    console.log("passwords don't match")
+                    err = { message: "Passwords don't match" }
+                    res.json(err)
+                }
+            })
             .catch(err => {
                 console.log("User find error", err)
                 res.status(500).json(err)

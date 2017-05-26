@@ -1,9 +1,7 @@
 <h1>
-    Welcome, {{welcomeMessage}}
+    Welcome, {{storage.welcomeMessage}}, {{userService.servicemessage}}
 </h1>
-<h1>
-    You Commited Changes
-</h1>
+<button (click)="logout()">Logout </button>
 
 <p> 3 types of validations for user: HTML input, ng form, server side</p>
 <p>all 4 crud operations on users</p>
@@ -11,7 +9,9 @@
 
 <p>Mean wall</p>
 <p> embedded doccument for one to many relationship</p>
-<h3 (click)="currentUser = !currentUser; welcomeMessage = 'UserName' ">Logged in toggler</h3>
+<!--dont for get to set the message to storage.currentUser.name-->
+<!--<h3 (click)="toggleStorage(); welcomeMessage = 'UserName' ">Logged in toggler</h3>-->
 
-<app-user-login *ngIf="!currentUser"></app-user-login>
-<app-friends *ngIf="currentUser" (logout)='clearUser()'></app-friends>
+
+<app-user-login *ngIf="!storage.loggedIn"></app-user-login>
+<app-friends *ngIf="storage.loggedIn" (logout)='logout()'></app-friends>

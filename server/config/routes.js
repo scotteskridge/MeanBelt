@@ -13,6 +13,7 @@ module.exports = function(app) {
     app.get('/user/get_all_users', users.get_all_users)
     app.post('/user/create', users.create)
     app.post('/user/update', users.update)
+    app.post('/user/login', users.login)
     app.post('/user/delete/:id', users.delete)
     app.get('/user/findOne/:id', users.show)
 }

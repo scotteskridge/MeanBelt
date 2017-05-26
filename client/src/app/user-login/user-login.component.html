@@ -3,6 +3,5 @@
 </p>
 
 
-<app-login></app-login>
+<app-login (loggedIn)='loggedin()'></app-login>
 <app-register (refresh)="refresh()"></app-register>
-<app-user-crud [allUsers]="allUsers" (refresh)="refresh()"></app-user-crud>

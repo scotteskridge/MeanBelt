@@ -9,6 +9,7 @@ const OPTIONS = new RequestOptions({headers : HEADERS})
 @Injectable()
 export class UserService {
 
+  servicemessage = "this is the service message"
   constructor(private http: Http) { }
 
   get_all_users(){
@@ -16,6 +17,13 @@ export class UserService {
     return this.http.get("/user/get_all_users")
       .map(data => data.json())
       .toPromise()
+  }
+
+  login(data){
+    console.log("the user service tried to login:", data)
+    return this.http.post(`/user/login`, data, OPTIONS)
+    .map(res => res.json()).toPromise()
+
   }
 
   create_User(User: User){
@@ -37,6 +45,11 @@ export class UserService {
     // console.log("The service is trying to delete", _id)
     return this.http.post(`/user/delete/${_id}`, OPTIONS).toPromise()
 
+  }
+
+  subscribeExample(){
+    return this.http.get(`/example/findOne/`)
+    .map(data => data.json()) //notice this has a map to json but no .toPromise
   }
 
 }

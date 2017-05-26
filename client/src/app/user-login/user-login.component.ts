@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from "app/user-login/user.service";
 
 @Component({
@@ -8,7 +8,9 @@ import { UserService } from "app/user-login/user.service";
 })
 export class UserLoginComponent implements OnInit {
   allUsers = []
+  showall = false
 
+  @Output() loggedIn = new EventEmitter
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -19,6 +21,10 @@ export class UserLoginComponent implements OnInit {
     this.updateUserList()
   }
 
+  loggedin(){
+    this.loggedIn.emit()
+  }
+
   updateUserList(){
     this.userService.get_all_users()
       .then((data) => {
@@ -26,6 +32,14 @@ export class UserLoginComponent implements OnInit {
         this.allUsers = data       
       })
       .catch((err) => {console.log(err)})
+  }
+
+  toServiceSubscribe(){
+    this.userService.subscribeExample().subscribe(
+      (res)=>{}, //do stuff with the response data
+      (err)=>{}, //do stuff with the error}
+      ()=>{} //do stuff on continue (after success) like redirect  can only do this on http subscribe    
+    )
   }
 
 

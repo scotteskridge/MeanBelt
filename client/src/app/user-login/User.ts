@@ -15,6 +15,14 @@ export class User {
     updatedAt;
     _id;
 
+    constructor(){
+        this.name = {
+            first: "",
+            middle: "",
+            last: ""
+        }
+    }
+
 }
 
 
