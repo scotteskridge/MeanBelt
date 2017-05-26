@@ -6,6 +6,8 @@ var User = mongoose.model('User');
 class Users {
 
     login(req, res) {
+        console.log(req.body)
+            // res.json(true)
         User.findOne({ name: req.body.name })
             .then(data => {
                 if (data.name == req.body.name) {
@@ -47,15 +49,15 @@ class Users {
     // }
 
     //may delete this as well
-    show(req, res) {
-        // console.log("the server is trying to show this _id", req.params.id)
-        User.findOne({ _id: req.params._id })
-            .then(data => { res.json(data) })
-            .catch(err => {
-                console.log("User find error", err)
-                res.status(500).json(err)
-            })
-    }
+    // show(req, res) {
+    //     // console.log("the server is trying to show this _id", req.params.id)
+    //     User.findOne({ _id: req.params._id })
+    //         .then(data => { res.json(data) })
+    //         .catch(err => {
+    //             console.log("User find error", err)
+    //             res.status(500).json(err)
+    //         })
+    // }
 }
 
 

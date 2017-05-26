@@ -1,14 +1,14 @@
 console.log('routes');
-let games = require('./../controllers/games')
+let games = require('./../controllers/Games')
 let questions = require('./../controllers/questions')
 let users = require("./../controllers/users")
 
 module.exports = function(app) {
     //User routes  Only needs login
     app.post('/user/login', users.login)
-    app.get('/user/findOne/:id', users.show)
+        // app.get('/user/findOne/:id', users.show)
 
-    //Games Routes
+    // //Games Routes
     app.post('/games/create', games.create)
     app.get('/games/get_all', games.get_all)
 

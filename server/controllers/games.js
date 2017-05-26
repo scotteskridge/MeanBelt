@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Game = mongoose.model('Game');
 
 
+
 class Games {
     get_all(req, res) {
         // console.log("the controller is looking for Game")
@@ -35,4 +36,4 @@ class Games {
 }
 
 
-module.exports = new Game
+module.exports = new Games

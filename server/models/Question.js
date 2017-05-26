@@ -6,15 +6,12 @@ var mongoose = require('mongoose');
 
 let QuestionSchema = new mongoose.Schema({
     ask: String, //from the user schema
-    correctAnswer: Number,
-    fakeAnswer: {
-        one: {
-            type: String,
-        },
-        two: {
-            type: String,
-        },
-
+    correctAnswer: String,
+    fakeAnswerOne: {
+        type: String,
+    },
+    fakeAnswerTwo: {
+        type: String,
     }
 }, { timestamps: true })
 

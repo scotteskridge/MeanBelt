@@ -1,0 +1,27 @@
+<div>
+    <p>1 .) {{testQuestions[0].ask}} </p>
+    <form>
+        <p><input type="radio" name="q1" [(ngModel)]="{{tally['1']}}" value="true">{{testQuestions[0].correctAnswer}}</p>
+        <p><input type="radio" name="q2" [(ngModel)]="{{tally['1']}}" value="false">{{testQuestions[0].fakeAnswerOne}} </p>
+        <p><input type="radio" name="q3" [(ngModel)]="{{tally['1']}}" value="false">{{testQuestions[0].fakeAnswerTwo}}</p>
+
+    </form>
+</div>
+<div>
+    <p>2 .) {{testQuestions[1].ask}} </p>
+    <form>
+        <p><input type="radio" name="q1" [(ngModel)]="{{tally['2']}}" value="true">{{testQuestions[1].correctAnswer}}</p>
+        <p><input type="radio" name="q2" [(ngModel)]="{{tally['2']}}" value="false">{{testQuestions[1].fakeAnswerOne}} </p>
+        <p><input type="radio" name="q3" [(ngModel)]="{{tally['2']}}" value="false">{{testQuestions[1].fakeAnswerTwo}}</p>
+
+    </form>
+</div>
+<div>
+    <p>3.) {{testQuestions[2].ask}} </p>
+    <form>
+        <p><input type="radio" name="q1" [(ngModel)]="{{tally['3']}}" value="true">{{testQuestions[2].correctAnswer}}</p>
+        <p><input type="radio" name="q2" [(ngModel)]="{{tally['3']}}" value="false">{{testQuestions[2].fakeAnswerOne}} </p>
+        <p><input type="radio" name="q3" [(ngModel)]="{{tally['3']}}" value="false">{{testQuestions[2].fakeAnswerTwo}}</p>
+
+    </form>
+</div>

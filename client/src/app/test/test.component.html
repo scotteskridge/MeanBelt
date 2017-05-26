@@ -1,0 +1,19 @@
+<h3> Hi {{storage.user}}!</h3>
+<p>Choose and answer for each of the questions and submit the test once done.</p>
+<p>Good Luck!</p>
+
+<div *ngFor="let question of testQuestions">
+    <p>1 .) {{question.ask}} </p>
+    <form>
+        <p><input type="radio" name="q1" value="true">{{question.correctAnswer}}</p>
+        <p><input type="radio" name="q2" value="false">{{question.fakeAnswerOne}} </p>
+        <p><input type="radio" name="q3" value="false">{{question.fakeAnswerTwo}}</p>
+
+    </form>
+</div>
+{{tally | json}}
+
+
+
+<a [routerLink]="['/']">Cancle</a>
+<button (click)='submit()'>Submit</button>

@@ -1,4 +1,10 @@
-<h1>
-    Welcome, {{storage.welcomeMessage}}
-</h1>
-<button (click)="logout()">Logout </button>
+<div *ngIf="!triviaService.testing">
+    <button (click)="logout()">Logout </button>
+    <button (click)="login()">login </button>
+</div>
+<br>
+
+
+
+
+<router-outlet></router-outlet>
