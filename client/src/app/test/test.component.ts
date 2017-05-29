@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TriviaService } from "app/trivia.service";
 import { Router } from "@angular/router";
+import { Question } from "app/question";
 
 @Component({
   selector: 'app-test',
@@ -9,13 +10,15 @@ import { Router } from "@angular/router";
 })
 export class TestComponent implements OnInit {
   storage = window['localStorage']
-  allQuestions = []
-  testQuestions = []
+  allQuestions: Question[]
+  testQuestions: Question[]
   tally = {
-    1 : false,
-    2 : false,
-    3 : false
+    "1" : false,
+    "2": false,
+    "3": false
   }
+
+  
   
 
 
@@ -41,6 +44,12 @@ export class TestComponent implements OnInit {
         this.allQuestions = data
         this.shuffle(this.allQuestions) 
         this.testQuestions = this.allQuestions.slice(0,3)
+        // console.log("the testQuestion object:",this.testQuestions)
+        for (let question of this.testQuestions){
+          // console.log("inside the for loop a querstion is:" , question)
+           this.shuffle(question.answers)
+        }
+       
         
       })
       .catch((err) => {console.log(err)})

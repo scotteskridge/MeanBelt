@@ -1,10 +1,23 @@
 export class Question {
     ask;
-    correctAnswer;
-    fakeAnswerOne;
-    fakeAnswerTwo;
+    answers = []
     createdAt;
     updatedAt;
     _id;
+
+}
+
+
+export class Answer {
+    answer;
+    value: boolean
+    createdAt;
+    updatedAt;
+    _id;
+
+    constructor(ans = "", val = false){
+        this.answer = ans
+        this.value = val
+    }
 
 }

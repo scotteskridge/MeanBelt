@@ -5,11 +5,23 @@
 
 <form>
     <p>Question :<input type="text" [(ngModel)]="newQuestion.ask" name="text" value=""></p>
-    <p>Correct Answer: <input type="text" [(ngModel)]="newQuestion.correctAnswer" name="text" value=""></p>
-    <p>Fake Answer 1: <input type="text" [(ngModel)]="newQuestion.fakeAnswerOne" name="text" value=""></p>
-    <p>Fake Answer 2:<input type="text" [(ngModel)]="newQuestion.fakeAnswerTwo" name="tex" value=""></p>
+    <p>Correct Answer: <input type="text" [(ngModel)]="a1.answer" name="text" value=""></p>
+    <p>Fake Answer 1: <input type="text" [(ngModel)]="a2.answer" name="text" value=""></p>
+    <p>Fake Answer 2:<input type="text" [(ngModel)]="a3.answer" name="tex" value=""></p>
 </form>
 
 
+{{a1 | json}}
+<br>
+{{a2 | json}}
+<br>
+{{a3 | json}}
+<br>
+{{newQuestion | json}}
+
 <a [routerLink]="['/']">Cancle</a>
 <button (click)='create()'>Add Question</button>
+
+<h3>This is all the questions</h3>
+
+{{allQuestions | json}}
