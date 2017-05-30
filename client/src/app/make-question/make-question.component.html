@@ -11,17 +11,17 @@
 </form>
 
 
-{{a1 | json}}
-<br>
-{{a2 | json}}
-<br>
-{{a3 | json}}
-<br>
-{{newQuestion | json}}
+
 
 <a [routerLink]="['/']">Cancle</a>
 <button (click)='create()'>Add Question</button>
 
 <h3>This is all the questions</h3>
 
-{{allQuestions | json}}
+<div *ngFor = "let question of allQuestions">
+    <p>Question :{{question.ask}}</p>
+    <p>Correct Answer:{{question.answers[0] | json}}</p>
+    <p>Fake Answer 1: {{question.answers[1] | json}}</p>
+    <p>Fake Answer 2: {{question.answers[2] | json}}</p> 
+    <button (click) = 'delete(question)'>Delete</button>
+</div>

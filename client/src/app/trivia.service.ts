@@ -21,24 +21,34 @@ export class TriviaService {
 
   create_question(question){
     console.log("service is sending", question)
-    return this.http.post("/questions/create", question, OPTIONS).toPromise()
+    return this.http.post("/questions/createQuestion", question, OPTIONS)
+      .toPromise()
+  }
+
+  deleteQuestion(question){
+    return this.http.post("/questions/deleteQuestion", question, OPTIONS)
+      .toPromise()
   }
 
   get_all_questions(){
     console.log("service is asking for all questions")
-    return this.http.get("/questions/get_all")
+    return this.http.get("/questions/get_allQuestions")
       .map(data => data.json())
       .toPromise()
   }
 
    create_game(game){
-    return this.http.post("/games/create", game, OPTIONS).toPromise()
+     console.log("service is sending a game", game)
+    return this.http.post("/games/createGame", game, OPTIONS).toPromise()
   }
 
   get_all_games(){
-    return this.http.get("/games/get_all")
+    console.log("service asked for all games")
+    return this.http.get("/games/get_allGames")
       .map(data => data.json())
       .toPromise()
   }
+
+
 
 }

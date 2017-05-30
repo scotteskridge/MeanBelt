@@ -9,7 +9,7 @@ class Games {
         // console.log("the controller is looking for Game")
         Game.find({})
             .then(data => {
-                // console.log("the server controller sent Game", Game)
+                console.log("the server controller sent Games", data)
                 res.json(data)
             })
             .catch(err => {
@@ -20,10 +20,11 @@ class Games {
 
     create(req, res) {
         // console.log("the server received a create Game", req.body)
-        let new_Game = new Game(req.body)
-        new_Game.save()
+        let newGame = new Game(req.body)
+        console.log("the controller is saveing the newGame", newGame)
+        newGame.save()
             .then(() => {
-                // console.log("and then the server sent a Game", new_Game)
+                // console.log("and then the server sent a Game", newGame)
                 res.json(true)
             })
             .catch(err => {

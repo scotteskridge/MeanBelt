@@ -9,10 +9,11 @@ module.exports = function(app) {
         // app.get('/user/findOne/:id', users.show)
 
     // //Games Routes
-    app.post('/games/create', games.create)
-    app.get('/games/get_all', games.get_all)
+    app.post('/games/createGame', games.create)
+    app.get('/games/get_allGames', games.get_all)
 
     //Questions Routes
-    app.post('/questions/create', questions.create)
-    app.get('/questions/get_all', questions.get_all)
+    app.post('/questions/createQuestion', questions.create)
+    app.post('/questions/deleteQuestion' , questions.delete)
+    app.get('/questions/get_allQuestions', questions.get_all)
 }

@@ -31,6 +31,16 @@ class Questions {
         res.json({ placeholder: 'create' });
     }
 
+    delete(req,res){
+        console.log("server is deleteing:", req.body)
+         Question.remove({ _id: req.body._id })
+            .then(() => { res.json(true) })
+            .catch(err => {
+                console.log("Friends find error", err)
+                res.status(500).json(err)
+            })
+    }
+
 
 }
 

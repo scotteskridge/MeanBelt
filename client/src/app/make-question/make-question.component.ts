@@ -24,7 +24,7 @@ export class MakeQuestionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      
+    this.getAllQuestions()
   }
 
   getAllQuestions(){
@@ -51,6 +51,14 @@ export class MakeQuestionComponent implements OnInit {
       // this.getAllQuestions()
     })
       .catch((err) => {console.log(err)})
+  }
+
+  delete(question){
+    this.triviaService.deleteQuestion(question)
+      .then((data) => {
+        this.getAllQuestions()
+      })
+      .catch((err) => console.log(err))
   }
 
   

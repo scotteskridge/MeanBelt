@@ -19,6 +19,6 @@
     <tr *ngFor="let game of allGames">
         <th>{{game.player}}</th>
         <th>{{game.correctAnswers}}/{{game.numQuestions}}</th>
-        <th>{{game.correctAnswers/game.numQuestions}}</th>
+        <th>{{game.correctAnswers/game.numQuestions | percent}}</th>
     </tr>
 </table>

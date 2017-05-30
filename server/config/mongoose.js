@@ -5,7 +5,7 @@ var fs = require("fs")
 var path = require("path")
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/MEANFriends_db")
+mongoose.connect("mongodb://localhost/BeltExam_db")
 
 var models_path = path.join(__dirname, "./../models")
 
