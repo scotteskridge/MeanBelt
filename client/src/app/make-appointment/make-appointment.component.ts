@@ -42,7 +42,7 @@ message = ""
     //add the user
     this.appointment.patientID = this.storage.userID
     this.appointment.patientName = this.storage.user
-    if(this.checkDuplicates(this.dateTime)){
+    // if(this.checkDuplicates(this.dateTime)){ //due to date problems needs to disable this
       // console.log("Client is makeing an appoitnment:", this.appointment)
       //send to server
       this.appointmentService.create_appointment(this.appointment)
@@ -51,9 +51,9 @@ message = ""
           this.router.navigateByUrl('/');
         })
         .catch((err) => {console.log(err)})
-    } else{
-      console.log("failed duplicate check")
-      }
+    // } else{
+    //   console.log("failed duplicate check")
+    //   }
   }
 
   Cancel(){
