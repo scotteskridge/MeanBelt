@@ -1,24 +1,32 @@
-<a [routerLink]="['/']">Home</a>
 
-<a [routerLink]="['/newQuestion']">Add a Question</a>
+<h2>Doctor's Appointments  </h2>
 
-<div>
-    <button (click)="play()">Play!</button>
-    <p>Click the button above to start the trivia game</p>
-</div>
 
-<p> Search: <input type="text" name="text" value=""></p>
-<br>
-<table>
+
+
+<p> Search: <input type="text" [(ngModel)]= "searchText" name="searchText" value=""></p>
+
+<table *ngIf = "allAppointments">
     <tr>
-        <th>Name</th>
-        <th>Score</th>
-        <th>Percentage</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Patient Name</th>
+        <th>Complaint</th>
     </tr>
 
-    <tr *ngFor="let game of allGames">
-        <th>{{game.player}}</th>
-        <th>{{game.correctAnswers}}/{{game.numQuestions}}</th>
-        <th>{{game.correctAnswers/game.numQuestions | percent}}</th>
+    <tr *ngFor="let appointment of allAppointments | filter:searchText">
+        <td>{{appointment.scheduledDate | date: 'shortDate' }}</td>
+        <td>{{appointment.scheduledDate | date: 'shortTime' }}</td>
+        <td>{{appointment.patientName}}</td>
+        <td>{{appointment.complaint}} <Button *ngIf= "appointment.patientID == storage.userID" (click)="cancel(appointment)">Cancel</Button></td>
+       
     </tr>
 </table>
+
+<Button (click)=scheduleAppointment()>Schedule an Appointment</Button>
+
+
+
+
+{{message}}
+

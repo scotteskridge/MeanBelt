@@ -1,12 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
-import { TestComponent } from './test/test.component';
-import { MakeQuestionComponent } from './make-question/make-question.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MakeAppointmentComponent } from "app/make-appointment/make-appointment.component";
 
 const APP_ROUTES: Routes = [
     { path: '', component: DashboardComponent },
-    { path: 'test', component: TestComponent },
-    { path: 'newQuestion', component: MakeQuestionComponent }
+    { path: 'makeAppointment', component: MakeAppointmentComponent },
+
 ];
 
 //concider useing routes for your logout service as well but may come back to that

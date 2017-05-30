@@ -1,0 +1,18 @@
+<h2>New Appoinment for {{storage.user}} </h2>
+
+<form >
+    <p>Scheduled Date :<input type="Date" [(ngModel)]="date" name="date" value=""></p>
+    <p>Scheduled Time: <input type="Time" [(ngModel)]="time" name="time" value=""></p>
+    <p>Complaint:<input type="text" [(ngModel)]="appointment.complaint" name="complaint" value="Dates Suck"></p>
+</form>
+<button (click)="Cancel()">Cancel </button>
+<button (click)="scheduleAppointment()"> Schedule Appointment </button>
+<Button (click)='localDate()'>local Date</Button>
+
+<Button (click)=checkDate()>checkDate</Button>
+<p>Scheduled Date : {{dateTime}}</p>
+
+{{time}}
+
+
+{{message}}

@@ -4,22 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TestComponent } from './test/test.component';
-import { MakeQuestionComponent } from './make-question/make-question.component';
-import { TriviaService } from "app/trivia.service";
+
 import { routing } from './app.routes';
-
-
+import { FilterPipe } from './filter.pipe';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MakeAppointmentComponent } from './make-appointment/make-appointment.component';
+import { AppointmentService } from "app/appointment.service"
+ 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
     DashboardComponent,
-    TestComponent,
-    MakeQuestionComponent,
+    MakeAppointmentComponent,
 
-   
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,7 @@ import { routing } from './app.routes';
     routing,
     HttpModule
   ],
-  providers: [TriviaService],
+  providers: [AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

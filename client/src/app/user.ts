@@ -2,5 +2,7 @@ export class User {
     name;
     createdAt;
     updatedAt;
-    _id;
+    _id
 }
+
+//users are patients

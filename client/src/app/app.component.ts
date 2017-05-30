@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from "app/user";
-import { TriviaService } from "app/trivia.service";
+import { AppointmentService } from "app/appointment.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,8 +17,9 @@ export class AppComponent {
   
 
 //inject service as needed private userService: UserService
-  constructor(private triviaService: TriviaService,
-              private router: Router
+  constructor(
+    private appointmentService: AppointmentService,
+    private router: Router
   ){
     this.storage.setItem("welcomeMessage", "Please Log In to continue")
     if(!this.storage.user){
@@ -28,24 +29,25 @@ export class AppComponent {
 
   ngOnInit(){
     if(this.storage.user == ""){
-      this.user.name = window.prompt("Welcome whats your user name?")
-      this.storage.setItem("user", this.user.name)
+      this.login()
     }
-    this.triviaService.testing = false
+    
     
   }
 
   ngOnChanges(){
     if(this.storage.user == ""){
-      this.user.name = window.prompt("Welcome whats your user name?")
-      this.storage.setItem("user", this.user.name)
+      this.login()
     }
   }
     
   login(){
-    this.user.name = window.prompt("Welcome whats your user name?")
+    this.user.name = window.prompt("Welcome what is the Patient's name?")
     this.storage.setItem("user", this.user.name)
-    this.triviaService.login(this.user)
+    this.appointmentService.login(this.user).then((data) => {
+      this.storage.setItem("userID", data._id)
+      this.storage.setItem("userDate", data.createdAt)
+    })
   }
 
 
@@ -56,11 +58,12 @@ export class AppComponent {
     this.storage.setItem("user", '')
     this.storage.setItem("welcomeMessage", "Please Log In to continue")
     this.router.navigateByUrl('/');
+    this.login()
   }
 
-  whatsinstorage(){
-    console.log(this.storage)
-  }
+  // whatsinstorage(){
+  //   console.log(this.storage)
+  // }
 
 
 
