@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Http, Headers, RequestOptions } from "@angular/http"
-import { User } from "./User"
+import { User } from "./user"
 import "rxjs"
 
 

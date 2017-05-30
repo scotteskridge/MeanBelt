@@ -1,0 +1,2 @@
+repo path: https://github.com/scotteskridge/MeanBelt.git
+final commit: 9f7dbdd2f9ce3906448a344f94853e542e188bd2
